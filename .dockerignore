@@ -1,3 +1,5 @@
-Dockerfile
-RUN.sh
-io
+/Dockerfile
+/README.md
+/LICENSE
+/RUN.sh
+/io-*
