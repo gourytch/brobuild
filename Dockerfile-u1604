@@ -1,0 +1,39 @@
+FROM ubuntu:16.04
+MAINTAINER gourytch
+
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN echo 'deb http://security.ubuntu.com/ubuntu bionic-security main' \
+    >/etc/apt/sources.list.d/libssl10.list
+
+RUN apt-get update && \
+    apt-get install -yt xenial \
+      autoconf \
+      automake \
+      autotools-dev \
+      bsdmainutils \
+      build-essential \
+      git \
+      libboost-chrono-dev \
+      libboost-filesystem-dev \
+      libboost-program-options-dev \
+      libboost-system-dev \
+      libboost-test-dev \
+      libboost-thread-dev \
+      libevent-dev \
+      libgmp3-dev \
+      libminiupnpc-dev \
+      libtool \
+      pkg-config \
+      wget \
+      zlib1g-dev
+
+RUN apt-get install -yt bionic-security \
+      libssl1.0-dev
+
+RUN mkdir -p /io
+
+COPY build.sh /build.sh
+RUN  chmod 0755 /build.sh
+
+VOLUME [ "/io" ]
